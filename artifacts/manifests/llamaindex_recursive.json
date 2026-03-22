@@ -1,0 +1,13 @@
+{
+  "collection_name": "llamaindex_recursive",
+  "framework": "llamaindex",
+  "strategy": "recursive",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_provider": "sbert",
+  "normalize": true,
+  "chunk_size": 800,
+  "chunk_overlap": 150,
+  "num_nodes": 197,
+  "num_documents": 198,
+  "created_at": "2026-01-12T09:22:08.141057"
+}

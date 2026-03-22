@@ -1,0 +1,16 @@
+{
+  "collection_name": "health_multimodal",
+  "clip_model": "clip-ViT-B-32",
+  "text_emb_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "text_in_clip_space": false,
+  "num_items": 50,
+  "categories": [
+    "actinic_keratoses",
+    "melanocytic_nevi",
+    "melanoma",
+    "benign_keratosis",
+    "basal_cell_carcinoma",
+    "vascular_lesions"
+  ],
+  "created_at": "2026-01-12T10:06:27.135547"
+}

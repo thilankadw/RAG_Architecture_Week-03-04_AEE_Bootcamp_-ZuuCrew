@@ -1,0 +1,16 @@
+{
+  "notebook": "03_memory_lcel_basics",
+  "topics": [
+    "ConversationBufferMemory",
+    "ConversationBufferWindowMemory",
+    "ConversationSummaryMemory",
+    "ConversationChain with memory",
+    "LCEL composition (pipe operator)",
+    "RunnableParallel",
+    "Streaming",
+    "Retry patterns"
+  ],
+  "llm_provider": "openrouter",
+  "llm_model": "gpt-4o-mini",
+  "created_at": "2026-01-25T07:04:02.931662"
+}
