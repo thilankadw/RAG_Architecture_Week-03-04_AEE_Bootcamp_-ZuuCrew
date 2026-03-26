@@ -15,7 +15,7 @@ cd "RAG Systems"
 
 # 2. Install dependencies (using uv - recommended)
 uv venv && source .venv/bin/activate
-uv pip install -r requirements.txt
+uv sync
 
 # 3. Verify installation
 python src/scripts/verify_install.py  # Should show: ✅ Working: 36/36
@@ -298,7 +298,7 @@ See `docs/ARCHITECTURE.md` for detailed design decisions.
 
 | Issue | Solution |
 |-------|----------|
-| **"No module named X"** | Run `uv pip install -r requirements.txt` or `python verify_install.py` |
+| **"No module named X"** | Run `uv sync` or `uv pip install -r requirements.txt`, then `python src/scripts/verify_install.py` |
 | **"API key not found"** | Check `.env` exists, add `OPENROUTER_API_KEY=xxx`, restart kernel |
 | **"ChromaDB collection exists"** | Delete `./artifacts/chroma/<name>/` or use different collection name |
 | **Slow embeddings** | Use lighter model: `all-MiniLM-L6-v2`, reduce `subset_n` |

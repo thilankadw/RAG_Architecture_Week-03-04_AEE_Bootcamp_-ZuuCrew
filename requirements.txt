@@ -14,18 +14,18 @@ torch>=2.0.0
 chromadb>=0.4.0
 
 # LangChain Core
-langchain>=0.1.0
-langchain-core>=0.1.0
-langchain-community>=0.0.20
+langchain==0.3.27
+langchain-core==0.3.79
+langchain-community==0.3.31
 
 # LangChain LLM Providers
-langchain-openai>=0.0.5
-langchain-groq>=0.0.1
-langchain-google-genai>=0.0.5
-langchain-cohere>=0.0.3
+langchain-openai==0.3.35
+langchain-groq==0.3.8
+langchain-google-genai==2.0.10
+langchain-cohere==0.4.6
 
 # LangChain Vector Stores
-langchain-chroma>=0.1.0
+langchain-chroma==0.2.6
 
 # LlamaIndex Core
 llama-index>=0.10.0
@@ -65,7 +65,7 @@ ipywidgets>=8.0.0
 jupyterlab>=4.0.0
 
 # Additional dependencies for langchain
-langchain-text-splitters>=0.0.1
+langchain-text-splitters==0.3.11
 
 # Additional for compatibility
 packaging>=23.0

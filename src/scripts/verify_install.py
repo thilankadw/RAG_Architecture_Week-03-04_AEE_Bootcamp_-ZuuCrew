@@ -6,13 +6,13 @@ Run this after installing requirements.txt to ensure everything works.
 
 import sys
 
+
 def test_imports():
     """Test all critical package imports."""
-    
+
     missing = []
     working = []
-    
-    # Test each package group
+
     tests = {
         "Core Data Processing": [
             ("pandas", "import pandas"),
@@ -32,13 +32,30 @@ def test_imports():
         "LangChain Core": [
             ("langchain", "import langchain"),
             ("langchain-core", "from langchain_core import prompts"),
-            ("langchain-community", "from langchain_community.embeddings import HuggingFaceEmbeddings"),
-            ("langchain-text-splitters", "from langchain_text_splitters import RecursiveCharacterTextSplitter"),
+            (
+                "langchain-community",
+                "from langchain_community.embeddings import HuggingFaceEmbeddings",
+            ),
+            (
+                "langchain-text-splitters",
+                "from langchain_text_splitters import RecursiveCharacterTextSplitter",
+            ),
+        ],
+        "LangChain Notebook Compatibility": [
+            ("langchain.chains", "from langchain.chains import RetrievalQA"),
+            (
+                "langchain.prompts",
+                "from langchain.prompts import PromptTemplate, ChatPromptTemplate",
+            ),
+            ("langchain.memory", "from langchain.memory import ConversationBufferMemory"),
         ],
         "LangChain Providers": [
             ("langchain-openai", "from langchain_openai import ChatOpenAI, OpenAIEmbeddings"),
             ("langchain-groq", "from langchain_groq import ChatGroq"),
-            ("langchain-google-genai", "from langchain_google_genai import ChatGoogleGenerativeAI"),
+            (
+                "langchain-google-genai",
+                "from langchain_google_genai import ChatGoogleGenerativeAI",
+            ),
             ("langchain-cohere", "from langchain_cohere import CohereEmbeddings"),
             ("langchain-chroma", "from langchain_chroma import Chroma"),
         ],
@@ -49,10 +66,22 @@ def test_imports():
             ("llama-index-llms-openai", "from llama_index.llms.openai import OpenAI"),
             ("llama-index-llms-groq", "from llama_index.llms.groq import Groq"),
             ("llama-index-llms-gemini", "from llama_index.llms.gemini import Gemini"),
-            ("llama-index-embeddings-openai", "from llama_index.embeddings.openai import OpenAIEmbedding"),
-            ("llama-index-embeddings-cohere", "from llama_index.embeddings.cohere import CohereEmbedding"),
-            ("llama-index-embeddings-huggingface", "from llama_index.embeddings.huggingface import HuggingFaceEmbedding"),
-            ("llama-index-vector-stores-chroma", "from llama_index.vector_stores.chroma import ChromaVectorStore"),
+            (
+                "llama-index-embeddings-openai",
+                "from llama_index.embeddings.openai import OpenAIEmbedding",
+            ),
+            (
+                "llama-index-embeddings-cohere",
+                "from llama_index.embeddings.cohere import CohereEmbedding",
+            ),
+            (
+                "llama-index-embeddings-huggingface",
+                "from llama_index.embeddings.huggingface import HuggingFaceEmbedding",
+            ),
+            (
+                "llama-index-vector-stores-chroma",
+                "from llama_index.vector_stores.chroma import ChromaVectorStore",
+            ),
         ],
         "API Clients": [
             ("openai", "import openai"),
@@ -75,45 +104,47 @@ def test_imports():
             ("jupyterlab", "import jupyterlab"),
         ],
     }
-    
-    print("🔍 Verifying RAG Systems Dependencies...\n")
+
+    print("Verifying RAG Systems Dependencies...\n")
     print("=" * 70)
-    
+
     for category, imports in tests.items():
-        print(f"\n📦 {category}")
+        print(f"\n{category}")
         print("-" * 70)
-        
+
         for package_name, import_statement in imports:
             try:
                 exec(import_statement)
-                print(f"  ✅ {package_name}")
+                print(f"  [OK] {package_name}")
                 working.append(package_name)
-            except ImportError as e:
-                print(f"  ❌ {package_name} - {e}")
+            except ImportError as exc:
+                print(f"  [FAIL] {package_name} - {exc}")
                 missing.append(package_name)
-    
+
     print("\n" + "=" * 70)
-    print(f"\n📊 Summary:")
-    print(f"  ✅ Working: {len(working)}/{len(working) + len(missing)}")
-    
+    print("\nSummary:")
+    print(f"  [OK] Working: {len(working)}/{len(working) + len(missing)}")
+
     if missing:
-        print(f"  ❌ Missing: {len(missing)}")
-        print(f"\n❌ Missing packages:")
+        print(f"  [FAIL] Missing: {len(missing)}")
+        print("\nMissing packages:")
         for pkg in missing:
             print(f"     - {pkg}")
-        print(f"\n💡 Install missing packages:")
-        print(f"     uv pip install -r requirements.txt")
+        print("\nReinstall the pinned environment:")
+        print("     uv sync")
+        print("     # or")
+        print("     uv pip install -r requirements.txt")
         return False
-    else:
-        print(f"\n🎉 All dependencies installed successfully!")
-        print(f"\n✨ You're ready to run the notebooks!")
-        print(f"\nNext steps:")
-        print(f"  1. Copy .env.example to .env and add your API keys")
-        print(f"  2. Start Jupyter: jupyter lab")
-        print(f"  3. Open notebooks in order (01, 10, 11, 12, 20, 30)")
-        return True
+
+    print("\nAll dependencies installed successfully!")
+    print("\nYou're ready to run the notebooks!")
+    print("\nNext steps:")
+    print("  1. Copy .env.example to .env and add your API keys")
+    print("  2. Start Jupyter: jupyter lab")
+    print("  3. Open notebooks in order (01, 10, 11, 12, 20, 30)")
+    return True
+
 
 if __name__ == "__main__":
     success = test_imports()
     sys.exit(0 if success else 1)
-
