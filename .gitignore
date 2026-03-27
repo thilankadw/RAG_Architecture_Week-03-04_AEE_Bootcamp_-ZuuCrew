@@ -45,7 +45,7 @@ data/images/*.jpg
 data/images/*.jpeg
 data/images/*.png
 data/*.csv
-data/
+data_hide
 
 # Keep structure
 !data/.gitkeep
