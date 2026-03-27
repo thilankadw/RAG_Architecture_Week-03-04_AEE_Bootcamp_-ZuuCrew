@@ -1,0 +1,15 @@
+{
+  "notebook": "12_memory_lcel_basics",
+  "topics": [
+    "ConversationBufferMemory",
+    "ConversationSummaryMemory",
+    "ConversationChain with memory",
+    "LCEL composition",
+    "Streaming",
+    "Retry patterns",
+    "Tool use"
+  ],
+  "llm_provider": "openai",
+  "llm_model": "gpt-4o-mini",
+  "created_at": "2026-03-27T12:00:50.853467"
+}
