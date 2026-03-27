@@ -35,10 +35,8 @@ ENV/
 .env.example
 
 # Artifacts (persisted, but large)
-artifacts/chroma/*/
-artifacts/naive_tfidf/*.npz
-artifacts/naive_tfidf/*.pkl
-artifacts/advanced/finetuned_embeddings/
+artifacts/chroma/
+artifacts/naive_tfidf/
 
 # Data (large files)
 data/raw_text/*.txt
@@ -47,6 +45,7 @@ data/images/*.jpg
 data/images/*.jpeg
 data/images/*.png
 data/*.csv
+data/
 
 # Keep structure
 !data/.gitkeep
